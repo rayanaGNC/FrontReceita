@@ -1,0 +1,73 @@
+<style>
+  .table-hover tbody tr:hover {
+    background-color: var(--hover-bg) !important;
+  }
+  .btn:hover {
+    opacity: 0.9;
+  }
+  .btn[style*="background-color: #6f42c1"]:hover {
+    background-color: #4a2d8a !important;
+    border-color: #4a2d8a !important;
+  }
+  .btn[style*="color: #6f42c1"]:hover {
+    background-color: #9d7bec !important;
+    color: white !important;
+  }
+</style>
+
+<div class="container mt-4">
+  <h2 class="mb-4" style="color: #6f42c1">Listagem de Reservas</h2>
+
+  <div class="d-flex justify-content-between mb-4">
+    <a
+      routerLink="/cadastro"
+      class="btn text-white"
+      style="background-color: #6f42c1; border-color: #6f42c1"
+    >
+      Nova Reserva
+    </a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead style="background-color: #6f42c1; color: white">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Nº Mesa</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Data da Reserva</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let reserva of reservas"
+          style="--hover-bg: rgba(111, 66, 193, 0.1)"
+        >
+          <td>{{ reserva.id }}</td>
+          <td>{{ reserva.nome }}</td>
+          <td>{{ reserva.numMesa }}</td>
+          <td>{{ reserva.telefone }}</td>
+          <td>{{ reserva.dataRes }}</td>
+          <td>
+            <a
+              [routerLink]="['/edicao', reserva.id]"
+              class="btn btn-sm"
+              style="
+                background-color: white;
+                color: #6f42c1;
+                border: 1px solid #6f42c1;
+              "
+            >
+              Editar
+            </a>
+          </td>
+        </tr>
+        <tr *ngIf="reservas.length === 0">
+          <td colspan="6" class="text-center">Nenhuma reserva encontrada</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

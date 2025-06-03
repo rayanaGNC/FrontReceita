@@ -1,0 +1,90 @@
+<style>
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #9d7bec;
+    box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.25);
+  }
+  .btn:hover {
+    background-color: #4a2d8a !important;
+    border-color: #4a2d8a !important;
+  }
+</style>
+
+<div class="container mt-4">
+  <h2 class="mb-4" style="color: #6f42c1">Cadastro de Reserva</h2>
+
+  <form
+    (ngSubmit)="salvar()"
+    class="border p-4 rounded"
+    style="border-color: #6f42c1 !important"
+  >
+    <div class="row mb-3">
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="nome"
+          placeholder="Nome completo"
+          [(ngModel)]="reserva.nome"
+          style="border-color: #6f42c1"
+          required
+        />
+      </div>
+      <div class="col-md-6 mb-3">
+        <input
+          type="tel"
+          class="form-control"
+          name="telefone"
+          placeholder="Telefone"
+          [(ngModel)]="reserva.telefone"
+          style="border-color: #6f42c1"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" style="color: #6f42c1">Data da Reserva:</label>
+      <input
+        name="dataRes"
+        type="datetime-local"
+        class="form-control"
+        [(ngModel)]="reserva.dataRes"
+        style="border-color: #6f42c1"
+        required
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" style="color: #6f42c1">Número da Mesa:</label>
+      <select
+        class="form-select"
+        [(ngModel)]="reserva.numMesa"
+        name="numMesa"
+        style="border-color: #6f42c1"
+        required
+      >
+        <option value="" selected disabled>Selecione o número da mesa</option>
+        <option value="1">Mesa 1</option>
+        <option value="2">Mesa 2</option>
+        <option value="3">Mesa 3</option>
+        <option value="4">Mesa 4</option>
+        <option value="5">Mesa 5</option>
+      </select>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button
+        type="submit"
+        class="btn text-white"
+        style="
+          background-color: #6f42c1;
+          border-color: #6f42c1;
+          min-width: 120px;
+        "
+      >
+        Cadastrar
+      </button>
+    </div>
+  </form>
+</div>
